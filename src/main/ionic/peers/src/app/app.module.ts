@@ -12,6 +12,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { CardsService } from "../services/cards-service";
 import { CardsState } from "../states/cards-state";
 
+import { EmailComposer } from '@ionic-native/email-composer';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -34,6 +36,7 @@ import { CardsState } from "../states/cards-state";
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     CardsState,
     CardsService,
+    EmailComposer,
   ]
 })
 export class AppModule {
