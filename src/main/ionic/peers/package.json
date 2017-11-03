@@ -43,19 +43,5 @@
     "@ionic/app-scripts": "3.0.1",
     "typescript": "2.3.4"
   },
-  "description": "An Ionic project",
-  "cordova": {
-    "plugins": {
-      "cordova-plugin-email-composer": {},
-      "cordova-plugin-email": {},
-      "ionic-plugin-keyboard": {},
-      "cordova-plugin-whitelist": {},
-      "cordova-plugin-device": {},
-      "cordova-plugin-splashscreen": {},
-      "cordova-plugin-ionic-webview": {}
-    },
-    "platforms": [
-      "android"
-    ]
-  }
+  "description": "An Ionic project"
 }
