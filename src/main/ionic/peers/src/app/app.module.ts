@@ -5,6 +5,7 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { MyProfile } from "../pages/myprofile/myprofile";
+import { LoginPage } from '../pages/login/login';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -17,12 +18,16 @@ import { ComponentsModule } from "../components/components.module";
 import { AppState } from "../states/app-state";
 
 import { SwingModule } from 'angular2-swing';
+import { AuthService } from '../services/auth-service';
+
+//import { CognitoUserPool } from 'amazon-cognito-identity-js';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     MyProfile,
+    LoginPage,
   ],
   imports: [
     BrowserModule,
@@ -35,6 +40,7 @@ import { SwingModule } from 'angular2-swing';
     MyApp,
     HomePage,
     MyProfile,
+    LoginPage,
   ],
   providers: [
     StatusBar,
@@ -44,6 +50,8 @@ import { SwingModule } from 'angular2-swing';
     AppState,
     CardsState,
     CardsService,
+    AuthService,
+    //CognitoUserPool,
   ]
 })
 export class AppModule {

@@ -5,8 +5,10 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
 import { MyProfile } from "../pages/myprofile/myprofile";
+import { LoginPage } from '../pages/login/login';
 import { AppState } from "../states/app-state";
 import { Subscription } from "rxjs/Subscription";
+import { AuthService } from "../services/auth-service";
 
 
 @Component({
@@ -17,7 +19,7 @@ export class MyApp implements OnInit, OnDestroy {
   loading: Loading;
 
   appStateSubscription: Subscription;
-  rootPage: any = HomePage;
+  rootPage: any = LoginPage;
 
   pages: Array<{ title: string, component: any }>;
 
@@ -25,13 +27,22 @@ export class MyApp implements OnInit, OnDestroy {
               public statusBar: StatusBar,
               public splashScreen: SplashScreen,
               private appState: AppState,
-              public loadingCtrl: LoadingController) {
+              public loadingCtrl: LoadingController,
+              private auth: AuthService) {
+    this.appState.setIsLoading(true);
+    auth.checkCurrentUser().subscribe(isValid => {
+      if (isValid) {
+        this.rootPage = HomePage;
+      }
+      this.appState.setIsLoading(false);
+    });
     this.initializeApp();
 
     // used for an example of ngFor and navigation
     this.pages = [
       {title: 'Home', component: HomePage},
       {title: 'My Profile', component: MyProfile},
+      {title: 'Login', component: LoginPage}
     ];
 
   }
@@ -63,6 +74,11 @@ export class MyApp implements OnInit, OnDestroy {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });
+  }
+
+  signOut() {
+    let currentUser = this.auth.signOut();
+    this.openPage(this.pages[2]);
   }
 
   openPage(page) {
