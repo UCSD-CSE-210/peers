@@ -31,7 +31,7 @@
     "@ionic/storage": "2.0.1",
     "amazon-cognito-identity-js": "^1.26.0",
     "angular2-swing": "^0.14.0",
-    "aws-sdk": "^2.156.0",
+    "aws-sdk": "^2.814.0",
     "ionic-angular": "^3.9.2",
     "ionic-img-viewer": "^2.9.0",
     "ionicons": "3.0.0",
